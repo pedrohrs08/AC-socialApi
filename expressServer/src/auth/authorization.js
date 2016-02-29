@@ -4,7 +4,11 @@ var jwt = require('jsonwebtoken');
 var Auth = function() {
   var verifyAuth = function(request) {
     var cookie = request.cookies[config.cookieName];
+    console.log(request.cookies[0]);
+    console.log(cookie);
+    console.log(config.cookieName);
     var authHeader;
+    console.log(request.headers.authorization);
     if (request.headers.authorization) {
         authHeader = request.headers.authorization.split(' ');
         if(authHeader.length === 2 && authHeader[0] === 'bearer') {
@@ -12,6 +16,7 @@ var Auth = function() {
         }
     }
     var token = cookie || authHeader;
+    console.log(cookie);
     if(token) {
       try {
         request.token = jwt.verify(token, config.secret, {issuer: config.issuer, ignoreExpiration: false});

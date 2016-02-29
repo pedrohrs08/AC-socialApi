@@ -1,5 +1,5 @@
 module.exports = {
-  host: 'localhost',
+  host: '0.0.0.0',
   port: 3000,
   secret: 'thisIsASimpleSecret123',
   issuer: 'ACode',
